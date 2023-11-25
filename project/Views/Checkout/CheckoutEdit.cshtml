@@ -1,0 +1,64 @@
+﻿@model project.Models.CheckoutModel
+
+@{
+    ViewData["Title"] = "CheckoutEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>CheckoutEdit</h1>
+
+<h4>CheckoutModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CheckoutEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CheckoutID" class="control-label" hidden></label>
+                <input asp-for="CheckoutID" class="form-control"  hidden/>
+                <span asp-validation-for="CheckoutID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckoutMemberID" class="control-label"></label>
+                <input asp-for="CheckoutMemberID" class="form-control" />
+                <span asp-validation-for="CheckoutMemberID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckoutEmployeeName" class="control-label"></label>
+                <input asp-for="CheckoutEmployeeName" class="form-control" />
+                <span asp-validation-for="CheckoutEmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckoutBookID" class="control-label"></label>
+                <input asp-for="CheckoutBookID" class="form-control" />
+                <span asp-validation-for="CheckoutBookID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckoutCheckoutDate" class="control-label"></label>
+                <input asp-for="CheckoutCheckoutDate" class="form-control" />
+                <span asp-validation-for="CheckoutCheckoutDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckoutDueDate" class="control-label"></label>
+                <input asp-for="CheckoutDueDate" class="form-control" />
+                <span asp-validation-for="CheckoutDueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CheckoutReturnDate" class="control-label"></label>
+                <input asp-for="CheckoutReturnDate" class="form-control" />
+                <span asp-validation-for="CheckoutReturnDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<project.Models.CheckoutModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckoutID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckoutMemberID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckoutEmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckoutBookID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckoutCheckoutDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckoutDueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckoutReturnDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckoutID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckoutMemberID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckoutEmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckoutBookID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckoutCheckoutDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckoutDueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckoutReturnDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CheckoutID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CheckoutID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CheckoutID })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
