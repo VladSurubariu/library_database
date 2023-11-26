@@ -27,6 +27,28 @@ namespace project.Repository
                 CheckoutList.Add(MapObjectToModel(dbCheckout));
             }
 
+            foreach (CheckoutModel model in CheckoutList)
+            {
+                Book item = new Book();
+                item = dbContext.Books.FirstOrDefault(x => x.BookId == model.CheckoutBookID);
+
+                if(item != null)
+                {
+                    model.bookName = item.BookName;
+                }
+            }
+
+            foreach (CheckoutModel model in CheckoutList)
+            {
+                Member item = new Member();
+                item = dbContext.Members.FirstOrDefault(x => x.MemberId == model.CheckoutMemberID);
+
+                if (item != null)
+                {
+                    model.memberName = item.MemberName;
+                }
+            }
+
             return CheckoutList;
         }
 
@@ -51,6 +73,11 @@ namespace project.Repository
             {
                 existingCheckout.CheckoutId = CheckoutModel.CheckoutID;
                 existingCheckout.CheckoutEmployeeName = CheckoutModel.CheckoutEmployeeName;
+                existingCheckout.CheckoutMemberId = CheckoutModel.CheckoutMemberID;
+                existingCheckout.CheckoutBookId = CheckoutModel.CheckoutBookID;
+                existingCheckout.CheckoutCheckoutDate = CheckoutModel.CheckoutCheckoutDate;
+                existingCheckout.CheckoutDueDate = CheckoutModel.CheckoutDueDate;
+                existingCheckout.CheckoutReturnDate = CheckoutModel.CheckoutReturnDate;
 
                 dbContext.SaveChanges();
             }
@@ -73,8 +100,13 @@ namespace project.Repository
 
             if (CheckoutModel != null)
             {
-                Checkout.CheckoutId = CheckoutModel.CheckoutID;
-                Checkout.CheckoutEmployeeName = CheckoutModel.CheckoutEmployeeName;
+                Checkout.CheckoutId             = CheckoutModel.CheckoutID;
+                Checkout.CheckoutEmployeeName   = CheckoutModel.CheckoutEmployeeName;
+                Checkout.CheckoutMemberId       = CheckoutModel.CheckoutMemberID;
+                Checkout.CheckoutBookId         = CheckoutModel.CheckoutBookID;
+                Checkout.CheckoutCheckoutDate   = CheckoutModel.CheckoutCheckoutDate; 
+                Checkout.CheckoutDueDate        = CheckoutModel.CheckoutDueDate;
+                Checkout.CheckoutReturnDate     = CheckoutModel.CheckoutReturnDate;
             }
 
             return Checkout;
@@ -88,9 +120,40 @@ namespace project.Repository
             {
                 CheckoutModel.CheckoutID = Checkout.CheckoutId;
                 CheckoutModel.CheckoutEmployeeName = Checkout.CheckoutEmployeeName;
+                CheckoutModel.CheckoutMemberID = Checkout.CheckoutMemberId;
+                CheckoutModel.CheckoutBookID = Checkout.CheckoutBookId;
+                CheckoutModel.CheckoutCheckoutDate = Checkout.CheckoutCheckoutDate;
+                CheckoutModel.CheckoutDueDate = Checkout.CheckoutDueDate;
+                CheckoutModel.CheckoutReturnDate = Checkout.CheckoutReturnDate;
             }
 
             return CheckoutModel;
+        }
+
+        public CheckoutModel UpdateBookName(CheckoutModel model)
+        {
+            Book item = new Book();
+            item = dbContext.Books.FirstOrDefault(x => x.BookId == model.CheckoutBookID);
+
+            if(item != null)
+            {
+                model.bookName = item.BookName;
+            }
+
+            return model;
+        }
+
+        public CheckoutModel UpdateMemberName(CheckoutModel model)
+        {
+            Member item = new Member();
+            item = dbContext.Members.FirstOrDefault(x => x.MemberId == model.CheckoutMemberID);
+
+            if (item != null)
+            {
+                model.memberName = item.MemberName;
+            }
+
+            return model;
         }
     }
 }

@@ -95,7 +95,7 @@ namespace project.Controllers
         public ActionResult Delete(Guid id)
         {
             var model = _repository.GetGenreModel(id);
-            return View("GenreDelete");
+            return View("GenreDelete", model);
         }
 
         // POST: GenreController/Delete/5

@@ -14,9 +14,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BookID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.BookName)
             </th>
             <th>
@@ -47,9 +44,6 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.BookID)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.BookName)
             </td>
             <td>
@@ -74,8 +68,8 @@
                 @Html.DisplayFor(modelItem => item.BookNumberOfUnitsAvailable)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BookID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.BookID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.BookID }) 
+                @Html.ActionLink("Details", "Details", new { id = item.BookID }) 
                 @Html.ActionLink("Delete", "Delete", new { id = item.BookID })
             </td>
         </tr>

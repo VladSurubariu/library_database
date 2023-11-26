@@ -14,16 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CheckoutID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CheckoutMemberID)
+                @Html.DisplayNameFor(model => model.memberName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CheckoutEmployeeName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CheckoutBookID)
+                @Html.DisplayNameFor(model => model.bookName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CheckoutCheckoutDate)
@@ -41,16 +38,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CheckoutID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CheckoutMemberID)
+                @Html.DisplayFor(modelItem => item.memberName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CheckoutEmployeeName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CheckoutBookID)
+                @Html.DisplayFor(modelItem => item.bookName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CheckoutCheckoutDate)

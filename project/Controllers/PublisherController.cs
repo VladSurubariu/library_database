@@ -95,7 +95,7 @@ namespace project.Controllers
         public ActionResult Delete(Guid id)
         {
             var model = _repository.GetPublisherModel(id);
-            return View("PublisherDelete");
+            return View("PublisherDelete", model);
         }
 
         // POST: PublisherController/Delete/5

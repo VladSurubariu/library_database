@@ -25,6 +25,9 @@ namespace project.Controllers
         public ActionResult Details(Guid id)
         {
             var model = _repository.GetCheckoutModel(id);
+            model = _repository.UpdateBookName(model);
+            model = _repository.UpdateMemberName(model);
+
             return View("CheckoutDetails", model);
         }
 
@@ -49,6 +52,10 @@ namespace project.Controllers
                 {
                     _repository.InsertCheckout(model);
                 }
+
+                model = _repository.UpdateMemberName(model);
+                model = _repository.UpdateBookName(model);
+
                 return View("CheckoutDetails", model);
 
             }
@@ -80,7 +87,7 @@ namespace project.Controllers
                 if (task.Result)
                 {
                     _repository.UpdateCheckout(model);
-                    return RedirectToAction("CheckoutDetails", model);
+                    return RedirectToAction("Index");
                 }
             }
             catch
@@ -95,7 +102,10 @@ namespace project.Controllers
         public ActionResult Delete(Guid id)
         {
             var model = _repository.GetCheckoutModel(id);
-            return View("CheckoutDelete");
+            model = _repository.UpdateBookName(model);
+            model = _repository.UpdateMemberName(model);
+
+            return View("CheckoutDelete", model);
         }
 
         // POST: CheckoutController/Delete/5
@@ -113,5 +123,7 @@ namespace project.Controllers
                 return View("CheckoutDelete", id);
             }
         }
+
+
     }
 }

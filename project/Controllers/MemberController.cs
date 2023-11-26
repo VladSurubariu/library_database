@@ -95,7 +95,7 @@ namespace project.Controllers
         public ActionResult Delete(Guid id)
         {
             var model = _repository.GetMemberModel(id);
-            return View("MemberDelete");
+            return View("MemberDelete", model);
         }
 
         // POST: MemberController/Delete/5

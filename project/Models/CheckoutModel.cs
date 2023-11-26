@@ -20,6 +20,7 @@ namespace project.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         [DataType(DataType.Date)]
         public DateTime CheckoutReturnDate { get; set; }
-
+        public string memberName { get; set; } = string.Empty;
+        public string bookName { get; set; } = string.Empty;
     }
 }
