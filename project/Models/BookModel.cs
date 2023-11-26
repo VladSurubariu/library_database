@@ -11,5 +11,6 @@
         public string? BookCoverType { get; set; }
         public int BookNumberOfUnits { get; set; }
         public int BookNumberOfUnitsAvailable { get; set; }
+        public string? bookGenreName { get; set; } = string.Empty;
     }
 }

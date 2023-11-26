@@ -25,6 +25,8 @@ namespace project.Controllers
         public ActionResult Details(Guid id)
         {
             var model = _repository.GetBookModel(id);
+            model = _repository.UpdateGenreName(model);
+
             return View("BookDetails", model);
         }
 
@@ -49,7 +51,7 @@ namespace project.Controllers
                 {
                     _repository.InsertBook(model);
                 }
-                return View("BookCreate");
+                return View("BookDetails", model);
 
             }
             catch
@@ -95,7 +97,7 @@ namespace project.Controllers
         public ActionResult Delete(Guid id)
         {
             var model = _repository.GetBookModel(id);
-            return View("BookDelete");
+            return View("BookDelete", model);
         }
 
         // POST: BookController/Delete/5

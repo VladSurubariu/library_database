@@ -27,12 +27,22 @@ namespace project.Repository
                 bookList.Add(MapObjectToModel(dbBook));
             }
 
+            foreach (BookModel model in bookList)
+            {
+                Genre genre = new Genre();
+                genre = dbContext.Genres.FirstOrDefault(x => x.GenreId == model.BookGenreID);
+
+                model.bookGenreName = genre.GenreName;
+            }
+
             return bookList;
         }
 
         public BookModel GetBookModel(Guid ID)
         {
-            return MapObjectToModel(dbContext.Books.FirstOrDefault(x => x.BookId == ID));
+            Book book = dbContext.Books.FirstOrDefault(x => x.BookId == ID);
+
+            return MapObjectToModel(book);
         }
 
         public void InsertBook(BookModel bookModel) 
@@ -91,7 +101,7 @@ namespace project.Repository
         {
             BookModel bookModel = new BookModel();
 
-            if(book != null )
+            if (book != null )
             {
                 bookModel.BookID = book.BookId;
                 bookModel.BookName = book.BookName;
@@ -101,10 +111,20 @@ namespace project.Repository
                 bookModel.BookPublishYear = book.BookPublishYear;
                 bookModel.BookCoverType = book.BookCoverType;
                 bookModel.BookNumberOfUnits = book.BookNumberOfUnits;
-                bookModel.BookNumberOfUnitsAvailable = bookModel.BookNumberOfUnitsAvailable;
+                bookModel.BookNumberOfUnitsAvailable = book.BookNumberOfUnitsAvailable;
             }
 
             return bookModel;
+        }
+
+        public BookModel UpdateGenreName(BookModel model)
+        {
+            Genre genre = new Genre();
+            genre = dbContext.Genres.FirstOrDefault(x => x.GenreId == model.BookGenreID);
+
+            model.bookGenreName = genre.GenreName;
+
+            return model;
         }
 
     }
