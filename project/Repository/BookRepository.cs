@@ -30,9 +30,26 @@ namespace project.Repository
             foreach (BookModel model in bookList)
             {
                 Genre genre = new Genre();
-                genre = dbContext.Genres.FirstOrDefault(x => x.GenreId == model.BookGenreID);
+                Publisher publisher= new Publisher();
+
+                if(genre != null)
+                {
+                    genre = dbContext.Genres.FirstOrDefault(x => x.GenreId == model.BookGenreID);
+                }
 
                 model.bookGenreName = genre.GenreName;
+            }
+
+            foreach (BookModel model in bookList)
+            {
+                Publisher publisher = new Publisher();
+                publisher = dbContext.Publishers.FirstOrDefault(x => x.PublisherId == model.BookPublisherID);
+
+                if(publisher!= null)
+                {
+                    model.bookPublisherName = publisher.PublisherName;
+                }
+
             }
 
             return bookList;
@@ -61,7 +78,13 @@ namespace project.Repository
             {
                 existingBook.BookId = bookModel.BookID;
                 existingBook.BookName = bookModel.BookName;
-
+                existingBook.BookAuthor = bookModel.BookAuthor;
+                existingBook.BookGenreID = bookModel.BookGenreID;
+                existingBook.BookPublishYear= bookModel.BookPublishYear;
+                existingBook.BookPublisherID= bookModel.BookPublisherID;
+                existingBook.BookCoverType = bookModel.BookCoverType;
+                existingBook.BookNumberOfUnits= bookModel.BookNumberOfUnits;
+                existingBook.BookNumberOfUnitsAvailable= bookModel.BookNumberOfUnitsAvailable;
                 dbContext.SaveChanges();
             }
         }
@@ -112,6 +135,7 @@ namespace project.Repository
                 bookModel.BookCoverType = book.BookCoverType;
                 bookModel.BookNumberOfUnits = book.BookNumberOfUnits;
                 bookModel.BookNumberOfUnitsAvailable = book.BookNumberOfUnitsAvailable;
+                
             }
 
             return bookModel;
@@ -122,7 +146,23 @@ namespace project.Repository
             Genre genre = new Genre();
             genre = dbContext.Genres.FirstOrDefault(x => x.GenreId == model.BookGenreID);
 
-            model.bookGenreName = genre.GenreName;
+            if (genre != null)
+            {
+                model.bookGenreName = genre.GenreName;
+            }
+
+            return model;
+        }
+
+        public BookModel UpdatePublisherName(BookModel model)
+        {
+            Publisher publisher = new Publisher();
+            publisher = dbContext.Publishers.FirstOrDefault(x => x.PublisherId == model.BookPublisherID);
+
+            if (publisher != null)
+            {
+                model.bookPublisherName = publisher.PublisherName;
+            }
 
             return model;
         }

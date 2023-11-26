@@ -49,12 +49,12 @@ namespace project.Controllers
                 {
                     _repository.InsertPublisher(model);
                 }
-                return View("PublisherCreate");
+                return View("PublisherDetails", model);
 
             }
             catch
             {
-                return View("PublisherCreate");
+                return View("Index");
             }
 
             return RedirectToAction(nameof(Index));

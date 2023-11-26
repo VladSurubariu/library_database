@@ -49,12 +49,12 @@ namespace project.Controllers
                 {
                     _repository.InsertGenre(model);
                 }
-                return View("GenreCreate");
+                return View("GenreDetails", model);;
 
             }
             catch
             {
-                return View("GenreCreate");
+                return View("Index");
             }
 
             return RedirectToAction(nameof(Index));

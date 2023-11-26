@@ -26,6 +26,7 @@ namespace project.Controllers
         {
             var model = _repository.GetBookModel(id);
             model = _repository.UpdateGenreName(model);
+            model = _repository.UpdatePublisherName(model);
 
             return View("BookDetails", model);
         }
@@ -51,6 +52,10 @@ namespace project.Controllers
                 {
                     _repository.InsertBook(model);
                 }
+
+                model = _repository.UpdateGenreName(model);
+                model = _repository.UpdatePublisherName(model);
+
                 return View("BookDetails", model);
 
             }
@@ -97,6 +102,8 @@ namespace project.Controllers
         public ActionResult Delete(Guid id)
         {
             var model = _repository.GetBookModel(id);
+            model = _repository.UpdateGenreName(model);
+            model = _repository.UpdatePublisherName(model);
             return View("BookDelete", model);
         }
 

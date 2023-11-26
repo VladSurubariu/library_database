@@ -1,4 +1,6 @@
-﻿namespace project.Models
+﻿using project.Models.DBObjects;
+
+namespace project.Models
 {
     public class BookModel
     {
@@ -12,5 +14,6 @@
         public int BookNumberOfUnits { get; set; }
         public int BookNumberOfUnitsAvailable { get; set; }
         public string? bookGenreName { get; set; } = string.Empty;
+        public string? bookPublisherName { get; set; } = string.Empty;
     }
 }

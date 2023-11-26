@@ -49,7 +49,7 @@ namespace project.Controllers
                 {
                     _repository.InsertMember(model);
                 }
-                return View("MemberCreate");
+                return View("MemberDetails", model);
 
             }
             catch

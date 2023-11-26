@@ -49,7 +49,7 @@ namespace project.Controllers
                 {
                     _repository.InsertCheckout(model);
                 }
-                return View("CheckoutCreate");
+                return View("CheckoutDetails", model);
 
             }
             catch
@@ -80,15 +80,15 @@ namespace project.Controllers
                 if (task.Result)
                 {
                     _repository.UpdateCheckout(model);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("CheckoutDetails", model);
                 }
             }
             catch
             {
-                return RedirectToAction("Index", id);
+                return RedirectToAction("Index");
             }
 
-            return RedirectToAction("Index", id);
+            return RedirectToAction("Index");
         }
 
         // GET: CheckoutController/Delete/5

@@ -75,6 +75,10 @@ namespace project.Repository
             {
                 Member.MemberId = MemberModel.MemberID;
                 Member.MemberName = MemberModel.MemberName;
+                Member.MemberPhoneNumber = MemberModel.MemberPhoneNumber;
+                Member.MemberAdress = MemberModel.MemberAdress;
+                Member.MemberEmail = MemberModel.MemberEmail;
+                Member.MemberMembershipExpirationDate = MemberModel.MemberMembershipExpirationDate;
             }
 
             return Member;
@@ -88,6 +92,10 @@ namespace project.Repository
             {
                 MemberModel.MemberID = Member.MemberId;
                 MemberModel.MemberName = Member.MemberName;
+                MemberModel.MemberPhoneNumber = Member.MemberPhoneNumber;
+                MemberModel.MemberEmail = Member.MemberEmail;
+                MemberModel.MemberAdress = Member.MemberAdress;
+                MemberModel.MemberMembershipExpirationDate = Member.MemberMembershipExpirationDate;
             }
 
             return MemberModel;
