@@ -20,7 +20,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="CheckoutMemberID" class="control-label"></label>
-                <input asp-for="CheckoutMemberID" class="form-control" />
+                <select asp-for="CheckoutMemberID" class="form-control">
+                    <option value="">Select member</option>
+                    @foreach (var member in Model.MemberList)
+                    {
+                        <option value="@member.MemberID">@member.MemberName</option>
+                    }
+                </select>
                 <span asp-validation-for="CheckoutMemberID" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -30,7 +36,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="CheckoutBookID" class="control-label"></label>
-                <input asp-for="CheckoutBookID" class="form-control" />
+                <select asp-for="CheckoutBookID" class="form-control">
+                    <option value="">Select book</option>
+                    @foreach (var book in Model.BookList)
+                    {
+                        <option value="@book.BookID">@book.BookName</option>
+                    }
+                </select>
                 <span asp-validation-for="CheckoutBookID" class="text-danger"></span>
             </div>
             <div class="form-group">

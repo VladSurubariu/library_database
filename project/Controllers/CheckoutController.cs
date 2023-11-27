@@ -2,16 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using project.Data;
 using project.Models;
+using project.Models.DBObjects;
 
 namespace project.Controllers
 {
     public class CheckoutController : Controller
     {
         private Repository.CheckoutRepository _repository;
+        private Repository.BookRepository _repository_book;
+        private Repository.MemberRepository _repository_member;
 
         public CheckoutController(ApplicationDbContext dbContext)
         {
             _repository = new Repository.CheckoutRepository(dbContext);
+            _repository_book = new Repository.BookRepository(dbContext);
+            _repository_member = new Repository.MemberRepository(dbContext);
         }
 
         // GET: CheckoutController
@@ -34,7 +39,16 @@ namespace project.Controllers
         // GET: CheckoutController/Create
         public ActionResult Create()
         {
-            return View("CheckoutCreate");
+            var book = _repository_book.GetAllBooks();
+            var member = _repository_member.GetAllMembers();
+
+            var model = new Models.CheckoutModel
+            {
+                BookList = book,
+                MemberList = member
+            };
+
+            return View("CheckoutCreate", model);
         }
 
         // POST: CheckoutController/Create
@@ -56,6 +70,11 @@ namespace project.Controllers
                 model = _repository.UpdateMemberName(model);
                 model = _repository.UpdateBookName(model);
 
+                var book = _repository_book.GetAllBooks();
+                var member = _repository_member.GetAllMembers();
+                model.BookList = book;
+                model.MemberList = member;
+
                 return View("CheckoutDetails", model);
 
             }
@@ -71,17 +90,23 @@ namespace project.Controllers
         public ActionResult Edit(Guid id)
         {
             var model = _repository.GetCheckoutModel(id);
+
+            var book = _repository_book.GetAllBooks();
+            var member = _repository_member.GetAllMembers();
+
+            model.BookList = book;
+            model.MemberList = member;
+
             return View("CheckoutEdit", model);
         }
 
         // POST: CheckoutController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Guid id, IFormCollection collection)
+        public ActionResult Edit(Guid id, CheckoutModel model)
         {
             try
             {
-                var model = new CheckoutModel();
                 var task = TryUpdateModelAsync(model);
                 task.Wait();
                 if (task.Result)

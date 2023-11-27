@@ -58,7 +58,6 @@ namespace project.Controllers
         {
             try
             {
-
                 var task = TryUpdateModelAsync(model);
                 task.Wait();
                 if (task.Result)
@@ -75,7 +74,6 @@ namespace project.Controllers
                 model.GenreList = genre;
                 model.PublisherList = publisher;
 
-
                 return View("BookDetails", model);
 
             }
@@ -91,17 +89,22 @@ namespace project.Controllers
         public ActionResult Edit(Guid id)
         {
             var model = _repository.GetBookModel(id);
+            var genre = _repository_genre.GetAllGenres();
+            var publisher = _repository_publisher.GetAllPublishers();
+
+            model.GenreList = genre;
+            model.PublisherList = publisher;
+
             return View("BookEdit", model);
         }
 
         // POST: BookController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Guid id, IFormCollection collection)
+        public ActionResult Edit(Guid id, BookModel model)
         {
             try
             {
-                var model = new BookModel(); 
                 var task = TryUpdateModelAsync(model);
                 task.Wait();
                 if (task.Result)
