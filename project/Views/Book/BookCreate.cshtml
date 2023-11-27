@@ -25,7 +25,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="BookGenreID" class="control-label"></label>
-                <input asp-for="BookGenreID" class="form-control" />
+                <select asp-for="BookGenreID" class="form-control">
+                    <option value="">Select Genre</option>
+                    @foreach (var genre in Model.GenreList)
+                    {
+                        <option value="@genre.GenreID">@genre.GenreName</option>
+                    }
+                </select>
                 <span asp-validation-for="BookGenreID" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,7 +41,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="BookPublisherID" class="control-label"></label>
-                <input asp-for="BookPublisherID" class="form-control" />
+                <select asp-for="BookPublisherID" class="form-control">
+                    <option value="">Select Publisher</option>
+                    @foreach (var publisher in Model.PublisherList)
+                    {
+                        <option value="@publisher.PublisherID">@publisher.PublisherName</option>
+                    }
+                </select>
                 <span asp-validation-for="BookPublisherID" class="text-danger"></span>
             </div>
             <div class="form-group">

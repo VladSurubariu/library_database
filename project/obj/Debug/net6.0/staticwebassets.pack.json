@@ -13,6 +13,34 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\0_Master\\Tehnologii modernde de programare\\proiect_2\\project\\project\\wwwroot\\images\\add-friend.png",
+      "PackagePath": "staticwebassets\\images\\add-friend.png"
+    },
+    {
+      "Id": "D:\\0_Master\\Tehnologii modernde de programare\\proiect_2\\project\\project\\wwwroot\\images\\book.png",
+      "PackagePath": "staticwebassets\\images\\book.png"
+    },
+    {
+      "Id": "D:\\0_Master\\Tehnologii modernde de programare\\proiect_2\\project\\project\\wwwroot\\images\\bookshelf.png",
+      "PackagePath": "staticwebassets\\images\\bookshelf.png"
+    },
+    {
+      "Id": "D:\\0_Master\\Tehnologii modernde de programare\\proiect_2\\project\\project\\wwwroot\\images\\library.png",
+      "PackagePath": "staticwebassets\\images\\library.png"
+    },
+    {
+      "Id": "D:\\0_Master\\Tehnologii modernde de programare\\proiect_2\\project\\project\\wwwroot\\images\\online-library.png",
+      "PackagePath": "staticwebassets\\images\\online-library.png"
+    },
+    {
+      "Id": "D:\\0_Master\\Tehnologii modernde de programare\\proiect_2\\project\\project\\wwwroot\\images\\return.png",
+      "PackagePath": "staticwebassets\\images\\return.png"
+    },
+    {
+      "Id": "D:\\0_Master\\Tehnologii modernde de programare\\proiect_2\\project\\project\\wwwroot\\images\\search.png",
+      "PackagePath": "staticwebassets\\images\\search.png"
+    },
+    {
       "Id": "D:\\0_Master\\Tehnologii modernde de programare\\proiect_2\\project\\project\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

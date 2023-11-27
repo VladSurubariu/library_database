@@ -8,10 +8,14 @@ namespace project.Controllers
     public class BookController : Controller
     {
         private Repository.BookRepository _repository;
+        private Repository.GenreRepository _repository_genre;
+        private Repository.PublisherRepository _repository_publisher;
 
         public BookController (ApplicationDbContext dbContext)
         {
             _repository = new Repository.BookRepository(dbContext);
+            _repository_genre = new Repository.GenreRepository(dbContext);
+            _repository_publisher = new Repository.PublisherRepository(dbContext);
         }
 
         // GET: BookController
@@ -34,7 +38,16 @@ namespace project.Controllers
         // GET: BookController/Create
         public ActionResult Create()
         {
-            return View("BookCreate");
+            var genre = _repository_genre.GetAllGenres();
+            var publisher = _repository_publisher.GetAllPublishers();
+
+            var model = new Models.BookModel
+            {
+                GenreList = genre,
+                PublisherList = publisher,
+            };
+
+            return View("BookCreate", model);
         }
 
         // POST: BookController/Create

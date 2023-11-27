@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using project.Data;
 using project.Models;
 
 namespace project.Controllers
 {
+    [Authorize(Roles = "User, Admin")]
     public class GenreController : Controller
     {
         private Repository.GenreRepository _repository;

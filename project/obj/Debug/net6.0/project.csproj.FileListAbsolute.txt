@@ -512,3 +512,4 @@ D:\0_Master\Tehnologii modernde de programare\proiect_2\project\project\obj\Debu
 D:\0_Master\Tehnologii modernde de programare\proiect_2\project\project\obj\Debug\net6.0\project.pdb
 D:\0_Master\Tehnologii modernde de programare\proiect_2\project\project\obj\Debug\net6.0\project.genruntimeconfig.cache
 D:\0_Master\Tehnologii modernde de programare\proiect_2\project\project\obj\Debug\net6.0\ref\project.dll
+D:\0_Master\Tehnologii modernde de programare\proiect_2\project\project\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
