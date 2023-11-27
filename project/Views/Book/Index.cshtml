@@ -17,20 +17,15 @@
                     </p>
                 }
             </center>
-        </div>
-        <div class="col-4">
-            <center>
-                <form asp-action="Search">
-                    <label for="searchTerm">Search for a book:</label>
-                    <input type="text" id="searchTerm" name="searchTerm" />
-                    <input type="submit" value="Search" />
-                </form>
-            </center>
+            <form class="marginclass" align = "right" asp-action="Search">
+                <label for="searchTerm">Search for a book:</label>
+                <input type="text" id="searchTerm" name="searchTerm" />
+                <input type="submit" value="Search" />
+            </form>
         </div>
     </div>
     @foreach (var item in Model)
     {
-
         <div class="row">
             <div class="col-10">
                 <h2>
@@ -81,7 +76,7 @@
             </div>
             <div class="col-2">
                 <center>
-                    <img class="imagine-carte" width="150px" length="200px" src="~/images/@(item.BookName.Trim() + ".jpg")" />
+                    <img class="marginclass" width="150px" length="200px" src="~/images/@(item.BookName.Trim() + ".jpg")" />
                 </center>
             </div>
         </div>
