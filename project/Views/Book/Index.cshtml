@@ -18,6 +18,15 @@
                 }
             </center>
         </div>
+        <div class="col-4">
+            <center>
+                <form asp-action="Search">
+                    <label for="searchTerm">Search for a book:</label>
+                    <input type="text" id="searchTerm" name="searchTerm" />
+                    <input type="submit" value="Search" />
+                </form>
+            </center>
+        </div>
     </div>
     @foreach (var item in Model)
     {

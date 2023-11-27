@@ -1,4 +1,7 @@
-﻿using project.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore;
+using project.Data;
 using project.Models;
 using project.Models.DBObjects;
 
@@ -165,6 +168,22 @@ namespace project.Repository
             }
 
             return model;
+        }
+
+        public List<BookModel> getBookFromName(string searchTerm)
+        {
+            List<BookModel> bookListModel = new List<BookModel>();
+
+            var foundBooks = dbContext.Books
+                .Where(book => book.BookName.Contains(searchTerm))
+                .ToList();
+
+            foreach (Book book in foundBooks)
+            {
+                bookListModel.Add(MapObjectToModel(book));
+            }
+
+            return bookListModel;
         }
 
     }

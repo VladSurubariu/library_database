@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using project.Data;
 using project.Models;
 
@@ -140,6 +141,23 @@ namespace project.Controllers
             {
                 return View("BookDelete", id);
             }
+        }
+
+        
+        [HttpPost]
+        public IActionResult Search(string searchTerm)
+        {
+            if(searchTerm == null)
+            {
+                var books = _repository.GetAllBooks();
+                return View("Index", books);
+            }
+            else
+            {
+                var books = _repository.getBookFromName(searchTerm);
+                return View("Index", books);
+            }
+
         }
     }
 }
