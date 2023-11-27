@@ -14,10 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PublisherID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublisherName)
+                PublisherName
             </th>
             <th></th>
         </tr>
@@ -25,9 +22,6 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublisherID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PublisherName)
             </td>
