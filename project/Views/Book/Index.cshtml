@@ -5,74 +5,79 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<container>
+    <div class="row">
+        <div class="col-12">
+            <center>
+                <h2> Book Inventory List </h2>
+                @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                {
+                    <p>
+                        <a asp-action="Create">Add new book</a>
+                    </p>
+                }
+            </center>
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
 
-<p>
-    <a asp-action="Create">Add new book</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BookName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookAuthor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bookGenreName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookPublishYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.bookPublisherName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookCoverType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookNumberOfUnits)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BookNumberOfUnitsAvailable)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookAuthor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.bookGenreName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookPublishYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.bookPublisherName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookCoverType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookNumberOfUnits)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BookNumberOfUnitsAvailable)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.BookID }) 
-                @Html.ActionLink("Details", "Details", new { id = item.BookID }) 
-                @Html.ActionLink("Delete", "Delete", new { id = item.BookID })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <div class="row">
+            <div class="col-10">
+                <h2>
+                    <b>@Html.DisplayFor(modelItem => item.BookName)</b>
+                </h2>
+                <container>
+                    <div class="row">
+                        <div class="col-8">
+                            <span>Author - </span>
+                            <b>@Html.DisplayFor(modelItem => item.BookAuthor)</b>
+                            <span>| Genre - </span>
+                            <b>@Html.DisplayFor(modelItem => item.bookGenreName)</b>
+                            <span>| Cover type - </span>
+                            <b>@Html.DisplayFor(modelItem => item.BookCoverType)</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <span>Publisher - </span>
+                            <b>@Html.DisplayFor(modelItem => item.bookPublisherName)</b>
+                            <span>| Publishing Year - </span>
+                            <b>@Html.DisplayFor(modelItem => item.BookPublishYear)</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <span>Number of units - </span>
+                            <b>@Html.DisplayFor(modelItem => item.BookNumberOfUnits)</b>
+                            <span>| Number of units available - </span>
+                            <b>@Html.DisplayFor(modelItem => item.BookNumberOfUnitsAvailable)</b>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            @if (User.IsInRole("Employee") || User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.BookID })
+                                <span> | </span>
+                                @Html.ActionLink("Details", "Details", new { id = item.BookID })
+                                <span> | </span>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.BookID })
+                            }
+                        </div>
+                    </div>
+
+
+                </container>
+            </div>
+            <div class="col-2">
+                <center>
+                    <img class="imagine-carte" width="150px" length="200px" src="~/images/@(item.BookName.Trim() + ".jpg")" />
+                </center>
+            </div>
+        </div>
+    }
+</container>
+
+
+

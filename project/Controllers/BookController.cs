@@ -44,7 +44,7 @@ namespace project.Controllers
             var model = new Models.BookModel
             {
                 GenreList = genre,
-                PublisherList = publisher,
+                PublisherList = publisher
             };
 
             return View("BookCreate", model);
@@ -53,11 +53,10 @@ namespace project.Controllers
         // POST: BookController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(BookModel model)
         {
             try
             {
-                Models.BookModel model = new Models.BookModel();
 
                 var task = TryUpdateModelAsync(model);
                 task.Wait();
@@ -68,6 +67,13 @@ namespace project.Controllers
 
                 model = _repository.UpdateGenreName(model);
                 model = _repository.UpdatePublisherName(model);
+                
+                var genre = _repository_genre.GetAllGenres();
+                var publisher = _repository_publisher.GetAllPublishers();
+
+                model.GenreList = genre;
+                model.PublisherList = publisher;
+
 
                 return View("BookDetails", model);
 
